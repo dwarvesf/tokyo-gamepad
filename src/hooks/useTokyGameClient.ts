@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, useId } from "react"
-import type { Gamepad, EventKit } from "tokyoclient-ts"
+import type { Gamepad, EventKit, IConfig } from "tokyoclient-ts"
 import { TokyoGameClient as TokyoClient } from "tokyoclient-ts"
 
-const CONFIG = {
+const CONFIG: IConfig = {
     serverHost: "combat.sege.dev",
     apiKey: "webuild0",
+    useHttps: true
   }
 
 interface UseTokyoGameClientParams {

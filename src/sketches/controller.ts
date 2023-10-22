@@ -72,7 +72,6 @@ export const controllerSketch:Sketcher<DemoSketcher> = (p5) => {
 
   p5.draw = () => {
     p5.background("");
-    console.log("render")
     handlingTouch([
       // Hanlding Fire button
       {

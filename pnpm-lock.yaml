@@ -51,8 +51,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.3.3)
   tokyoclient-ts:
-    specifier: ^1.0.7
-    version: 1.0.7(ws@8.14.2)
+    specifier: ^1.0.8
+    version: 1.0.8(ws@8.14.2)
 
 devDependencies:
   '@types/node':
@@ -3820,8 +3820,8 @@ packages:
     dependencies:
       is-number: 7.0.0
 
-  /tokyoclient-ts@1.0.7(ws@8.14.2):
-    resolution: {integrity: sha512-Y7yJpv3bogkzbTz8qZpW6I1xuk/ppbG0N8VRscYbzOJuJqsfgNAHmh8n4dQGbGAT+Uzqz+wXTB3yoGxBdTogJA==}
+  /tokyoclient-ts@1.0.8(ws@8.14.2):
+    resolution: {integrity: sha512-fpr+lG1HQsnNWmNhbLZqZJXSBWvKtyNwJqdzJ3QxlhuaEkPvy/QjpIalXCYJJGVSoqDD3c4r46XTj335UCoVRA==}
     dependencies:
       isomorphic-ws: 5.0.0(ws@8.14.2)
     optionalDependencies:
