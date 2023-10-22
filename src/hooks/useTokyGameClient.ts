@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useId } from "react"
 import type { Gamepad, EventKit } from "tokyoclient-ts"
 import { TokyoGameClient as TokyoClient } from "tokyoclient-ts"
 
@@ -14,6 +14,12 @@ interface UseTokyoGameClientParams {
     userName: string
 }
 
+export interface TokyoController {
+    rotate: (a:number) => void
+    fire: () => void
+    throttle: (s: number) => void
+}
+
 export const useTokyoGameClient = ({
     userName,
     onConnectSucceed,
@@ -22,6 +28,7 @@ export const useTokyoGameClient = ({
 }: UseTokyoGameClientParams) => {
     const [ client, setClient ] = useState<TokyoClient>()
     const [ isFirstLoading, setIsFirstLoading ] = useState(true)
+    const id = useId()
 
     const connectSuccessRef = useRef(onConnectSucceed)
     const eventHandlerRef = useRef(eventHandler)
@@ -31,7 +38,7 @@ export const useTokyoGameClient = ({
 
         const client = new TokyoClient({
             ...CONFIG,
-            userName
+            userName: userName + "_" + id
         })
 
         client.setOnOpenFn((gamepad: Gamepad) => {
@@ -45,14 +52,15 @@ export const useTokyoGameClient = ({
         console.log("created client")
     }
 
-    useEffect(createGameClient, [allowConnect, userName])
+    useEffect(createGameClient, [allowConnect, userName, id])
 
     return {
         controller: client ? {
             rotate: client.rotate.bind(client),
             fire: client.fire.bind(client),
             throttle: client.throttle.bind(client),
-        }: undefined,
+        } as TokyoController: undefined,
         isFirstLoading
     }
 }
+
