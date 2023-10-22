@@ -65,7 +65,7 @@ export const controllerSketch:Sketcher<DemoSketcher> = (p5) => {
         // @ts-ignore
         fire: throttleRequest(props.tokyoController.fire, 0, true),
         rotate: throttleRequest(props.tokyoController.rotate, 100),
-        throttleSpeed: throttleRequest(props.tokyoController.throttle, 100)
+        throttleSpeed: throttleRequest(props.tokyoController.throttle, 60)
       }
     }
   }

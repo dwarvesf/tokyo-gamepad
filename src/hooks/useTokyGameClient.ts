@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState, useId } from "react"
-import type { Gamepad, EventKit, IConfig } from "tokyoclient-ts"
-import { TokyoGameClient as TokyoClient } from "tokyoclient-ts"
-
-const CONFIG: IConfig = {
-    serverHost: "combat.sege.dev",
-    apiKey: "webuild0",
-    useHttps: true
-  }
+import { 
+    TokyoGameClient as TokyoClient, 
+    Gamepad, 
+    EventKit, 
+} from "tokyoclient-ts"
 
 interface UseTokyoGameClientParams {
     onConnectSucceed?: (gp: Gamepad) => void
@@ -23,36 +20,24 @@ export interface TokyoController {
 
 export const useTokyoGameClient = ({
     userName,
-    onConnectSucceed,
-    eventHandler,
     allowConnect=true
 }: UseTokyoGameClientParams) => {
     const [ client, setClient ] = useState<TokyoClient>()
     const [ isFirstLoading, setIsFirstLoading ] = useState(true)
     const id = useId()
 
-    const connectSuccessRef = useRef(onConnectSucceed)
-    const eventHandlerRef = useRef(eventHandler)
-
     const createGameClient = () => {
         if (!allowConnect) return
-
         const client = new TokyoClient({
-            ...CONFIG,
+            serverHost: "combat.sege.dev",
+            apiKey: "webuild",
+            useHttps: true,
             userName: userName + "_" + id
         })
-
-        client.setOnOpenFn((gamepad: Gamepad) => {
-            setIsFirstLoading(false)
-            connectSuccessRef.current?.(gamepad)
-        })
-        client.setOnMessageFn((e: EventKit) => eventHandlerRef.current?.(e))
-
+        client.setOnOpenFn(() => setIsFirstLoading(false))
         setClient(client)
-
         console.log("created client")
     }
-
     useEffect(createGameClient, [allowConnect, userName, id])
 
     return {

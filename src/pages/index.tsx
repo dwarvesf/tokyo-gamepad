@@ -34,7 +34,7 @@ export default function Home () {
             <Toggle pressed={isLockScreen} onPressedChange={e => setIsLockScreen(e)} 
               variant="outline"
             >
-              {isLockScreen ? "Unclock": "Lock"}
+              {isLockScreen ? "Unlock": "Lock"}
             </Toggle>
             <div className='flex items-center gap-2'>
               {isFirstLoading ? (
