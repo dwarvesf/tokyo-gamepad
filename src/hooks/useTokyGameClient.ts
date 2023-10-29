@@ -29,7 +29,7 @@ export const useTokyoGameClient = ({
         const client = new TokyoClient({
             serverHost: "combat.sege.dev",
             apiKey: uuidv4(),
-            useHttps: true,
+            useSecureConnection: true,
             userName: userName + "_" + id
         })
         client.setOnOpenFn(() => setIsLoading(false))
