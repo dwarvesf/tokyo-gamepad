@@ -40,8 +40,8 @@ export const createAutoUpdatePropsSketcher = <Props extends SketchProps=SketchPr
   }
 }
 
+// NOTE: Modify methods of provided sketcher to handling auto resize automatically
 export const createAutoResizeSketcher = <Props extends SketchProps=SketchProps>(func: AutoResizeEnhancedSketcher<Props>) : AutoResizeEnhancedSketcher<Props> => {
-  // Make Canvas auto resize to its wrapper
   return (p5) => {
     func(p5)
     const originalwrapperResize = p5.onWrapperResize
@@ -62,8 +62,8 @@ export const createAutoResizeSketcher = <Props extends SketchProps=SketchProps>(
   }
 }
 
+// NOTE: Modify provided sketcher to handling touch event manager for mobile Devices.
 export const createMobileTouchManagerSketcher = <Props extends SketchProps=SketchProps>(func: MobileTouchEnhancedSketcher<Props>) : MobileTouchEnhancedSketcher<Props> => {
-  // Provide Touch Manager and Touch Event Register
   return (p5) =>  {
     let prevTouches = [] as P5Touch[]
     const handlers: Array<TouchHandler> = []
@@ -138,6 +138,7 @@ export const createMobileTouchManagerSketcher = <Props extends SketchProps=Sketc
     func(p5)
     const originalDraw = p5.draw
     p5.draw = () => {
+      // Invoke registered Callback on active event.
       handlingTouch()
       originalDraw?.()
     }

@@ -1,10 +1,8 @@
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Toggle } from "@/components/ui/toggle"
-import { useTokyoGameClient } from "@/hooks/useTokyGameClient"
-import { Input } from "@/components/ui/input"
+import { useTokyoGameClient } from "@/hooks/useTokyoGameClient"
 import { JoystickCanvas } from "@/components/JoystickCanvas"
 import { ButtonCanvas } from "@/components/ButtonCanvas"
+import { LoginForm } from "@/components/LoginForm"
 import clsx from "clsx"
 
 export default function Home () {
@@ -31,16 +29,26 @@ export default function Home () {
             )}
         </h3>
         <div className='flex flex-col items-center justify-center pb-8 gap-4'>
-            <Toggle pressed={isLockScreen} onPressedChange={e => setIsLockScreen(e)} 
-              variant="outline"
+            <div>
+              <input
+                id="inputLock"
+                className="hidden"
+                type="checkbox"
+                checked={isLockScreen}
+                onChange={e => setIsLockScreen(e.target.checked)}
+              />
+              <label htmlFor="inputLock">
+                {isLockScreen ? "🔒 Locked" : "🔓 Lock" }
+              </label>
+            </div>
+            <button
+              className="px-4  h-10 rounded-lg bg-neutral-800 text-neutral-200"
+              onClick={() => {
+                setUsername("")
+              }}
             >
-              {isLockScreen ? "Unclock": "Lock"}
-            </Toggle>
-            <Button onClick={() => {
-              setUsername("")
-            }}>
               Logout
-            </Button>
+            </button>
             <div className='flex items-center gap-2'>
               {isLoading ? (
                   <>
@@ -91,34 +99,6 @@ export default function Home () {
           controller?.fire()
         }}
       />
-    </main>
-  )
-}
-
-function LoginForm (props: { setUsername: (_: string) => void}) {
-  const { setUsername } = props
-  const [ internalUsername, setInternalUsername ] = useState<string>("")
-
-  return (
-    <main className="relative h-[100vh] tablet:w-[600px] w-full tablet:px-0 px-8 flex flex-col gap-8 mx-auto">
-        <h3 className="text-7xl font-bold mt-16 text-center">
-          TokyoRS
-        </h3>
-        <div className='flex flex-col gap-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/5 w-full px-10'>
-          <Input
-            className="text-lg p-6"
-            placeholder="Your Username"
-            value={internalUsername}
-            onChange={(e) => {setInternalUsername(e.target.value)}}
-          />
-          <Button
-            className='!p-6 text-lg'
-            size="lg"
-            onClick={() => setUsername(internalUsername)}
-          > 
-            Play
-          </Button>
-        </div>
     </main>
   )
 }

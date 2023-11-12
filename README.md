@@ -1,27 +1,40 @@
-# React + TypeScript + Vite
+# tokyo-gamepad
+tokyo-gamepad is web based gamepad interface that implemented using `tokyoclient-ts` under the hood to allow user directly controll their ship in Tokyo game server.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Website: [tokyo-gamepad-vite.vercel.app](tokyo-gamepad-vite.vercel.app)
+- Server: [combat.sege.dev](combat.sege.dev)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
+- [TokyoClient-t](https://github.com/dwarvesf/ts-tokyoclient)
+- [ReactJs + ViteJs](https://vitejs.dev/)
+- [P5Js](https://p5js.org/)
+- [Tailwind](https://tailwindcss.com/)
+- ...
 
-## Expanding the ESLint configuration
+## Development
+1. Clone this repo
+2. Install the dependencies
+```
+npm install
+```
+3. Run the development server
+```
+npm run dev
+```
+4. Open http://localhost:3000/ with your browser to see the result.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+## Deployment
+### Self-hosted
+To self host Gamepad interface for tokyo game.
+1. Build the app
+```
+npm run build
+```
+2. Start the production server
+```
+npm run start
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contribution
+Contributions are welcome! Feel free to open issues or submit pull requests for any improvements or bug fixes.
