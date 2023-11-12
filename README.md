@@ -1,8 +1,8 @@
 # tokyo-gamepad
 tokyo-gamepad is web based gamepad interface that implemented using `tokyoclient-ts` under the hood to allow user directly controll their ship in Tokyo game server.
 
-- Website: [tokyo-gamepad-vite.vercel.app](tokyo-gamepad-vite.vercel.app)
-- Server: [combat.sege.dev](combat.sege.dev)
+- Website: [tokyo-gamepad-vite.vercel.app](https://tokyo-gamepad-vite.vercel.app)
+- Server: [combat.sege.dev](https://combat.sege.dev)
 
 
 ## Technologies
